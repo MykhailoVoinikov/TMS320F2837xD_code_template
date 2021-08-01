@@ -1,0 +1,6 @@
+#ifndef 24_2_UPP_CONFIGURING_DEVICE_PINS_H_
+#define 24_2_UPP_CONFIGURING_DEVICE_PINS_H_
+
+//Features Supported
+
+#endif /* 24_2_UPP_CONFIGURING_DEVICE_PINS_H_ */

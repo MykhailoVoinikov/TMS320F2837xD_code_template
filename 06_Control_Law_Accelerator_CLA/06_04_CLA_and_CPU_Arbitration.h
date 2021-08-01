@@ -1,0 +1,6 @@
+#ifndef 6_4_CLA_AND_CPU_ARBITRATION_H_
+#define 6_4_CLA_AND_CPU_ARBITRATION_H_
+
+//CLA Message RAM
+
+#endif /* 6_4_CLA_AND_CPU_ARBITRATION_H_ */

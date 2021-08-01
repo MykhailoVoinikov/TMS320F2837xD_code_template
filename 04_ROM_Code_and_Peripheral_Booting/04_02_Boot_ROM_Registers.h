@@ -1,0 +1,4 @@
+#ifndef 4_2_BOOT_ROM_REGISTERS_H_
+#define 4_2_BOOT_ROM_REGISTERS_H_
+
+#endif /* 4_2_BOOT_ROM_REGISTERS_H_ */

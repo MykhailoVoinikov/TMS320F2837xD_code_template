@@ -1,0 +1,7 @@
+#ifndef 22_13_CAN_MESSAGE_INTERFACE_REGISTER_SETS_H_
+#define 22_13_CAN_MESSAGE_INTERFACE_REGISTER_SETS_H_
+
+//Message Interface Register Sets 1 and 2
+//IF3 Register Set
+
+#endif /* 22_13_CAN_MESSAGE_INTERFACE_REGISTER_SETS_H_ */

@@ -1,0 +1,7 @@
+#ifndef 10_2_ANALOG_SUBSYSTEM_REGISTERS_H_
+#define 10_2_ANALOG_SUBSYSTEM_REGISTERS_H_
+
+//Analog Subsystem Base Addresses
+//ANALOG_SUBSYS_REGS Registers
+
+#endif /* 10_2_ANALOG_SUBSYSTEM_REGISTERS_H_ */

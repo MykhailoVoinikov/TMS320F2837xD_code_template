@@ -1,0 +1,9 @@
+#ifndef 3_10_LOW_POWER_MODES_H_
+#define 3_10_LOW_POWER_MODES_H_
+
+//IDLE
+//STANDBY
+//HALT
+//HIB
+
+#endif /* 3_10_LOW_POWER_MODES_H_ */

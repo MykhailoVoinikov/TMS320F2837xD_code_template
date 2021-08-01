@@ -1,0 +1,5 @@
+#ifndef 11_3_ADC_BLOCK_DIAGRAM_H_
+#define 11_3_ADC_BLOCK_DIAGRAM_H_
+
+
+#endif /* 11_3_ADC_BLOCK_DIAGRAM_H_ */

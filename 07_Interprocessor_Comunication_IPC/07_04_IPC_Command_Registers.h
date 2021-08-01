@@ -1,0 +1,4 @@
+#ifndef 7_4_COMMAND_REGISTERS_H_
+#define 7_4_COMMAND_REGISTERS_H_
+
+#endif /* 7_4_COMMAND_REGISTERS_H_ */

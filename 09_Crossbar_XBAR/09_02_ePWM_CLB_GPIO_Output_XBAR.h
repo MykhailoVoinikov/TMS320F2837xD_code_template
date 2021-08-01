@@ -1,0 +1,9 @@
+#ifndef 9_2_EPWM_CLB_GPIO_OUTPUT_XBAR_H_
+#define 9_2_EPWM_CLB_GPIO_OUTPUT_XBAR_H_
+
+//ePWM X-BAR
+//CLB X-BAR
+//GPIO Output X-BAR
+//X-BAR Flags
+
+#endif /* 9_2_EPWM_CLB_GPIO_OUTPUT_XBAR_H_ */

@@ -1,0 +1,6 @@
+#ifndef 22_7_CAN_PARITY_CHECK_MECHANISM_H_
+#define 22_7_CAN_PARITY_CHECK_MECHANISM_H_
+
+//Behavior on Parity Error
+
+#endif /* 22_7_CAN_PARITY_CHECK_MECHANISM_H_ */

@@ -1,0 +1,4 @@
+#ifndef 7_5_FREE_RUNNING_COUNTER_H_
+#define 7_5_FREE_RUNNING_COUNTER_H_
+
+#endif /* 7_5_FREE_RUNNING_COUNTER_H_ */

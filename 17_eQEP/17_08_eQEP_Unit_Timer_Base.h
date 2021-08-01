@@ -1,0 +1,5 @@
+#ifndef 17_8_EQEP_UNIT_TIMER_BASE_H_
+#define 17_8_EQEP_UNIT_TIMER_BASE_H_
+
+
+#endif /* 17_8_EQEP_UNIT_TIMER_BASE_H_ */

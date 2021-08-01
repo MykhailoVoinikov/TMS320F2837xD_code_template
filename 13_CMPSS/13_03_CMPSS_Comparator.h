@@ -1,0 +1,5 @@
+#ifndef 13_3_CMPSS_COMPARATOR_H_
+#define 13_3_CMPSS_COMPARATOR_H_
+
+
+#endif /* 13_3_CMPSS_COMPARATOR_H_ */

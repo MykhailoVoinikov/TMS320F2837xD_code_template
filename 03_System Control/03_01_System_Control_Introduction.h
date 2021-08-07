@@ -1,5 +1,5 @@
-#ifndef 3_1_SYSTEM_CONTROL_INTRODUCTION_H_
-#define 3_1_SYSTEM_CONTROL_INTRODUCTION_H_
+#ifndef _3_1_SYSTEM_CONTROL_INTRODUCTION_H_
+#define _3_1_SYSTEM_CONTROL_INTRODUCTION_H_
 
 #include "03_02_System_Control_Functional_Description.h"
 #include "03_03_Resets.h"
@@ -15,4 +15,12 @@
 #include "03_13_Dual_Code_Security_Module_DCSM.h"
 #include "03_14_JTAG.h"
 
-#endif /* 3_1_SYSTEM_CONTROL_INTRODUCTION_H_ */
+#include "sysctl.h"
+
+/*
+DEV_CFG_REGS
+CLK_CFG_REGS
+CPU_SYS_REGS
+*/
+
+#endif /* _3_1_SYSTEM_CONTROL_INTRODUCTION_H_ */

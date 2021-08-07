@@ -1,0 +1,31 @@
+#include "03_02_System_Control_Functional_Description.h"
+
+void deviceIdentification (DeviceID_t* device_id)
+{
+    device_id->FormatRevision = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDL) &
+            SYSCTL_PARTIDL_PARTID_FORMAT_REVISION_M) >> SYSCTL_PARTIDL_PARTID_FORMAT_REVISION_S);
+    device_id->FlashSize = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDL) &
+            SYSCTL_PARTIDL_FLASH_SIZE_M) >> SYSCTL_PARTIDL_FLASH_SIZE_S);
+    device_id->Instaspin = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDL) &
+            SYSCTL_PARTIDL_INSTASPIN_M) >> SYSCTL_PARTIDL_INSTASPIN_S);
+    device_id->PinCount = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDL) &
+            SYSCTL_PARTIDL_PIN_COUNT_M) >> SYSCTL_PARTIDL_PIN_COUNT_S);
+    device_id->Qual = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDL) &
+            SYSCTL_PARTIDL_QUAL_M) >> SYSCTL_PARTIDL_QUAL_S);
+    device_id->ClassID = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDH) &
+            SYSCTL_PARTIDH_DEVICE_CLASS_ID_M) >> SYSCTL_PARTIDH_DEVICE_CLASS_ID_S);
+    device_id->PartNo = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDH) &
+            SYSCTL_PARTIDH_PARTNO_M) >> SYSCTL_PARTIDH_PARTNO_S);
+    device_id->Family = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDH) &
+            SYSCTL_PARTIDH_FAMILY_M) >> SYSCTL_PARTIDH_FAMILY_S);
+    device_id->RevID = HWREG(DEVCFG_BASE + SYSCTL_O_REVID);
+    device_id->UID_PsRand0 = HWREG(UID_REGS_BASE + UID_PSRAND0_O_UID_REGS);
+    device_id->UID_PsRand1 = HWREG(UID_REGS_BASE + UID_PSRAND1_O_UID_REGS);
+    device_id->UID_PsRand2 = HWREG(UID_REGS_BASE + UID_PSRAND2_O_UID_REGS);
+    device_id->UID_PsRand3 = HWREG(UID_REGS_BASE + UID_PSRAND3_O_UID_REGS);
+    device_id->UID_PsRand4 = HWREG(UID_REGS_BASE + UID_PSRAND4_O_UID_REGS);
+    device_id->UID_PsRand5 = HWREG(UID_REGS_BASE + UID_PSRAND5_O_UID_REGS);
+    device_id->UID_Unique = HWREG(UID_REGS_BASE + UID_UNIQUE_O_UID_REGS);
+    device_id->UID_CheckSum = HWREG(UID_REGS_BASE + UID_CHECKSUM_O_UID_REGS);
+    device_id->CPU_ID = (uint16_t)HWREG(UID_CPUID_BASE);
+}

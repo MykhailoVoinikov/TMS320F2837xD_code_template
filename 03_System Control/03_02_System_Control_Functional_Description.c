@@ -1,7 +1,12 @@
 #include "03_02_System_Control_Functional_Description.h"
 
+//*****************************************************************************
+//! Reads all UIDs
+//! \param UIDs structure target.
+//! \return None
+//*****************************************************************************
 void deviceIdentification (DeviceID_t* device_id)
-{
+{	
     device_id->FormatRevision = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDL) &
             SYSCTL_PARTIDL_PARTID_FORMAT_REVISION_M) >> SYSCTL_PARTIDL_PARTID_FORMAT_REVISION_S);
     device_id->FlashSize = ((HWREG(DEVCFG_BASE + SYSCTL_O_PARTIDL) &
@@ -28,4 +33,106 @@ void deviceIdentification (DeviceID_t* device_id)
     device_id->UID_Unique = HWREG(UID_REGS_BASE + UID_UNIQUE_O_UID_REGS);
     device_id->UID_CheckSum = HWREG(UID_REGS_BASE + UID_CHECKSUM_O_UID_REGS);
     device_id->CPU_ID = (uint16_t)HWREG(UID_CPUID_BASE);
+}
+
+//*****************************************************************************
+//! CPU Select register for common peripherals
+// This register must be configured prior to enabling the peripheral clocks.
+// The clock for each peripheral is derived from the selected CPU subsystem. The clock mux controlled by
+// this register is not glitch-free, therefore the CPUSELx register must be configured before the PCLKCRx
+// register.
+// The reset for each peripheral is also driven from the selected CPU.
+//! \param None.
+//! \return Error: 0xAAAA - OK; other - module error number
+//*****************************************************************************
+uint16_t selectCPUForPeripherals (void)
+{
+    EALLOW;
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL0) = SELECT_CPU_EPWM;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL0) != SELECT_CPU_EPWM) return SYSCTL_CPUSEL0_EPWM;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL0_EPWM);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL1) = SELECT_CPU_ECAP;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL1) != SELECT_CPU_ECAP) return SYSCTL_CPUSEL1_ECAP;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL1_ECAP);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL2) = SELECT_CPU_EQEP;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL2) != SELECT_CPU_EQEP) return SYSCTL_CPUSEL2_EQEP;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL2_EQEP);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL4) = SELECT_CPU_SD;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL4) != SELECT_CPU_SD) return SYSCTL_CPUSEL4_SD;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL4_SD);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL5) = SELECT_CPU_SCI;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL5) != SELECT_CPU_SCI) return SYSCTL_CPUSEL5_SCI;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL5_SCI);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL6) = SELECT_CPU_SPI;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL6) != SELECT_CPU_SPI) return SYSCTL_CPUSEL6_SPI;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL6_SPI);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL7) = SELECT_CPU_I2C;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL7) != SELECT_CPU_I2C) return SYSCTL_CPUSEL7_I2C;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL7_I2C);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL8) = SELECT_CPU_CAN;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL8) != SELECT_CPU_CAN) return SYSCTL_CPUSEL8_CAN;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL8_CAN);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL9) = SELECT_CPU_MCBSP;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL9) != SELECT_CPU_MCBSP) return SYSCTL_CPUSEL9_MCBSP;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL9_MCBSP);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL11) = SELECT_CPU_ADC;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL11) != SELECT_CPU_ADC) return SYSCTL_CPUSEL11_ADC;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL11_ADC);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL12) = SELECT_CPU_CMPSS;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL12) != SELECT_CPU_CMPSS) return SYSCTL_CPUSEL12_CMPSS;
+    EALLOW;
+#ifdef SELECT_CPU_SELECT_LOCK
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL12_CMPSS);
+#endif
+    HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL14) = SELECT_CPU_DAC;
+    EDIS;
+    if (HWREG(DEVCFG_BASE + SYSCTL_O_CPUSEL14) != SELECT_CPU_DAC) return SYSCTL_CPUSEL14_DAC;
+#ifdef SELECT_CPU_SELECT_LOCK
+    EALLOW;
+    HWREG(DEVCFG_BASE + SYSCTL_O_DEVCFGLOCK1) |= (1<<SYSCTL_CPUSEL14_DAC);
+    EDIS;
+#endif
+
+    return 0xAAAA;
 }

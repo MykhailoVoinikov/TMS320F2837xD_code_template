@@ -60,3 +60,78 @@ PAGE 1 : /* Data Memory */
    CPU2TOCPU1RAM   : origin = 0x03F800, length = 0x000400
    CPU1TOCPU2RAM   : origin = 0x03FC00, length = 0x000400
 }
+
+SECTIONS
+{
+   /* Allocate program areas: */
+   .cinit              : > FLASHB      PAGE = 0, ALIGN(4)
+   .pinit              : > FLASHB,     PAGE = 0, ALIGN(4)
+   .text               : >> FLASHB | FLASHC | FLASHD | FLASHE      PAGE = 0, ALIGN(4)
+   codestart           : > BEGIN       PAGE = 0, ALIGN(4)
+
+#ifdef __TI_COMPILER_VERSION__
+   #if __TI_COMPILER_VERSION__ >= 15009000
+    .TI.ramfunc : {} LOAD = FLASHD,
+                         RUN = RAMLS0 | RAMLS1 | RAMLS2 |RAMLS3,
+                         LOAD_START(_RamfuncsLoadStart),
+                         LOAD_SIZE(_RamfuncsLoadSize),
+                         LOAD_END(_RamfuncsLoadEnd),
+                         RUN_START(_RamfuncsRunStart),
+                         RUN_SIZE(_RamfuncsRunSize),
+                         RUN_END(_RamfuncsRunEnd),
+                         PAGE = 0, ALIGN(4)
+   #else
+   ramfuncs            : LOAD = FLASHD,
+                         RUN = RAMLS0 | RAMLS1 | RAMLS2 |RAMLS3,
+                         LOAD_START(_RamfuncsLoadStart),
+                         LOAD_SIZE(_RamfuncsLoadSize),
+                         LOAD_END(_RamfuncsLoadEnd),
+                         RUN_START(_RamfuncsRunStart),
+                         RUN_SIZE(_RamfuncsRunSize),
+                         RUN_END(_RamfuncsRunEnd),
+                         PAGE = 0, ALIGN(4)   
+   #endif
+#endif
+						 
+   /* Allocate uninitalized data sections: */
+   /*.stack              : > RAMM1      PAGE = 1 */
+   .stack              : > RAMD1        PAGE = 1
+   .ebss               : >> RAMLS5 | RAMGS0 | RAMGS1       PAGE = 1
+
+   .myebss : > RAMGS1 PAGE = 1
+
+   .esysmem            : > RAMLS5       PAGE = 1
+
+   /* Initalized sections go in Flash */
+   .econst             : >> FLASHF | FLASHG | FLASHH      PAGE = 0, ALIGN(4)
+   .switch             : > FLASHB      PAGE = 0, ALIGN(4)
+   
+   .reset              : > RESET,     PAGE = 0, TYPE = DSECT /* not used, */
+
+   Filter_RegsFile     : > RAMGS0,	   PAGE = 1
+   
+   SHARERAMGS0		: > RAMGS0,		PAGE = 1
+   SHARERAMGS1		: > RAMGS1,		PAGE = 1
+   
+   /* The following section definitions are required when using the IPC API Drivers */ 
+    GROUP : > CPU1TOCPU2RAM, PAGE = 1 
+    {
+        PUTBUFFER 
+        PUTWRITEIDX 
+        GETREADIDX 
+    }
+    
+    GROUP : > CPU2TOCPU1RAM, PAGE = 1
+    {
+        GETBUFFER :    TYPE = DSECT
+        GETWRITEIDX :  TYPE = DSECT
+        PUTREADIDX :   TYPE = DSECT
+    }  
+    
+}
+
+/*
+//===========================================================================
+// End of file.
+//===========================================================================
+*/

@@ -17,6 +17,10 @@
 
 #include "sysctl.h"
 
+extern DeviceID_t device_id;
+
+uint32_t System_Control_Functional_Description (void);
+
 /*
 DEV_CFG_REGS
 CLK_CFG_REGS

@@ -274,5 +274,6 @@ void deviceIdentification (DeviceID_t* device_id);
 uint16_t selectCPUForPeripherals (void);
 uint16_t checkDeviceCapability (void);
 uint16_t eFuseErrorStatus (void);
+void peripheralSoftwareReset (void);
 
 #endif /* _3_2_SYSTEM_CONTROL_SYSTEM_CONTROL_FUNCTIONAL_DESCRIPTION_H_ */

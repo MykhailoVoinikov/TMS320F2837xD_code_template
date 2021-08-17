@@ -1,5 +1,5 @@
-#ifndef 8_1_GPIO_INTRODUCTION_H_
-#define 8_1_GPIO_INTRODUCTION_H_
+#ifndef _8_1_GPIO_INTRODUCTION_H_
+#define _8_1_GPIO_INTRODUCTION_H_
 
 #include "08_02_GPIO_Configuration_Overview.h"
 #include "08_03_Digital_General_Purpose_IO_Control.h"
@@ -9,4 +9,4 @@
 #include "08_07_GPIO_and_Peripheral_Muxing.h"
 #include "08_08_GPIO_Internal_Pullup_Configuration_Requirements.h"
 
-#endif /* 8_1_GPIO_INTRODUCTION_H_ */
+#endif /* _8_1_GPIO_INTRODUCTION_H_ */

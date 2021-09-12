@@ -1,5 +1,5 @@
-#ifndef 4_1_ROM_CODE_AND_PERIPHERAL_BOOTING_INTRODUCTION_H_
-#define 4_1_ROM_CODE_AND_PERIPHERAL_BOOTING_INTRODUCTION_H_
+#ifndef _4_1_ROM_CODE_AND_PERIPHERAL_BOOTING_INTRODUCTION_H_
+#define _4_1_ROM_CODE_AND_PERIPHERAL_BOOTING_INTRODUCTION_H_
 
 #include "04_02_Boot_ROM_Registers.h"
 #include "04_03_Device_Boot_Sequence.h"
@@ -11,4 +11,6 @@
 #include "04_09_Device_Reset_and_Exception_Handling.h"
 #include "04_10_Boot_ROM_Description.h"
 
-#endif /* 4_1_ROM_CODE_AND_PERIPHERAL_BOOTING_INTRODUCTION_H_ */
+void ROM_CodePeripheralBooting (void);
+
+#endif /* _4_1_ROM_CODE_AND_PERIPHERAL_BOOTING_INTRODUCTION_H_ */

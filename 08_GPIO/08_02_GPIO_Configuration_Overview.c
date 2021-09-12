@@ -1,10 +1,12 @@
 #include "08_02_GPIO_Configuration_Overview.h"
 
+//use OTP when sure
+
 void _8_2_GPIO_Configuration_Overview (void)
 {
 	EALLOW;
 	
-	//Selects which master's GPIODAT/SET/CLEAR/TOGGLE registers control this GPIO pins
+	//Selects which master's GPIODAT/SET/CLEAR/TOGGLE registers controls this GPIO pins
 	HWREG(GPIOCTRL_BASE + GPIO_O_GPACSEL1) = 0x00000000; 
 	HWREG(GPIOCTRL_BASE + GPIO_O_GPACSEL2) = 0x00000000; 
 	HWREG(GPIOCTRL_BASE + GPIO_O_GPACSEL3) = 0x00000000; 

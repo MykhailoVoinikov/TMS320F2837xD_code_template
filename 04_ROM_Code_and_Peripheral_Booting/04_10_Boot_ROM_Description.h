@@ -1,5 +1,5 @@
-#ifndef 4_10_BOOT_ROM_DESCRIPTION_H_
-#define 4_10_BOOT_ROM_DESCRIPTION_H_
+#ifndef _4_10_BOOT_ROM_DESCRIPTION_H_
+#define _4_10_BOOT_ROM_DESCRIPTION_H_
 
 //Entry Points
 //Wait Points
@@ -14,4 +14,4 @@
 //Boot Status information
 //ROM Version
 
-#endif /* 4_10_BOOT_ROM_DESCRIPTION_H_ */
+#endif /* _4_10_BOOT_ROM_DESCRIPTION_H_ */

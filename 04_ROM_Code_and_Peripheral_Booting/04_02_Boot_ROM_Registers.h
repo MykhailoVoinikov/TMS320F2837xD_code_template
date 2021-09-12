@@ -1,4 +1,6 @@
-#ifndef 4_2_BOOT_ROM_REGISTERS_H_
-#define 4_2_BOOT_ROM_REGISTERS_H_
+#ifndef _4_2_BOOT_ROM_REGISTERS_H_
+#define _4_2_BOOT_ROM_REGISTERS_H_
 
-#endif /* 4_2_BOOT_ROM_REGISTERS_H_ */
+void BootROM_Registers (void);
+
+#endif /* _4_2_BOOT_ROM_REGISTERS_H_ */
